@@ -16,6 +16,9 @@
 
     {{!-- Ghost header styles --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/ghost-header.css"}}" />
+    
+    {{!-- Custom styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "bulit/custom.css"}}" />
 
     {{!-- This tag outputes SEO meta+structured data and other important settings --}}
     {{ghost_head}}
@@ -67,6 +70,8 @@
 
     {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
     {{ghost_foot}}
+
+    <script isso-data="//gemeinsam.zickner.de/isso" src="//gemeinsam.zickner.de/isso/js/embed.min.js"></script>
 
 </body>
 </html>
