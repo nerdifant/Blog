@@ -36,9 +36,9 @@ into the {body} of the default.hbs template --}}
             {{!-- Email subscribe form at the bottom of the page --}}
             {{#if @labs.subscribers}}
             <section class="subscribe-form">
-                <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
-                <p>Get the latest posts delivered right to your inbox</p>
-                {{subscribe_form placeholder="youremail@example.com"}}
+                <h3 class="subscribe-form-title">Abonniere unseren Blog</h3>
+                <p>Erhalte eine E-Mail Benachrichtigung über neue Blogeinträge.</p>
+                {{subscribe_form placeholder="deine@email.adresse"}}
             </section>
             {{/if}}
 
@@ -55,12 +55,12 @@ into the {body} of the default.hbs template --}}
                         {{#if bio}}
                             <p>{{bio}}</p>
                         {{else}}
-                            <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                            <p>Lese <a href="{{url}}">mehr Beiträge</a> von diesem Autor.</p>
                         {{/if}}
                     </section>
                 </section>
                 <div class="post-full-footer-right">
-                    <a class="author-card-button" href="{{url}}">Read More</a>
+                    <a class="author-card-button" href="{{url}}">Mehr von diesem Autor</a>
                 </div>
 
                 {{/author}}

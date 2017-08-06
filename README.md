@@ -7,3 +7,15 @@ This is the Ghost company blog theme which runs on blog.ghost.org and dev.ghost.
 # Copyright & License
 
 Copyright (c) 2013-2017 Ghost Foundation - Released under the [MIT license](LICENSE).
+
+# Development
+Install gulp
+
+    npm install -g gulp
+    cd /path-to/casper-gemeinsam
+    npm install
+
+run:
+
+    cd /path-to/casper-gemeinsam
+    glup

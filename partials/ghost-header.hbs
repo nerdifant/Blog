@@ -8,13 +8,16 @@
         {{else}}
           {{@blog.title}}
         {{/if}}
-        <div class="gh-nav-logo-suffix">Blog</div>
+        
       </a>
     </div>
 
     <div class="gh-navbar-right">
       {{#if @blog.navigation}}
         {{navigation}}
+      {{/if}}
+      {{#if @labs.subscribers}}
+        <a class="subscribe-button" href="/subscribe">Jetzt abonnieren</a>
       {{/if}}
     </div>
 
