@@ -203,31 +203,68 @@ $(document).ready(function () {
     update();
 });
 
-var slideIndex = 1;
-showDivs(slideIndex);
+// Slideshow
+var contentElements = [].slice.call(document.getElementsByClassName("slideshow"));
+var numberOfShows = contentElements.length;
+var slideIndex = []
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
+for (d = 0; d < numberOfShows; d++) {
+    slideIndex.push(1)
+
+    // Add controls
+    var controlElements = [].slice.call(document.getElementsByClassName("slideshow")[d].getElementsByClassName("controls"));
+    var imgElements = [].slice.call(document.getElementsByClassName("slideshow")[d].getElementsByTagName("img"));
+    
+    var c = "<div style='float: left' onclick='plusDivs(-1, this)'>&#10094;</div>"
+    c += "<div style='float: right' onclick='plusDivs(1, this)'>&#10095;</div>"
+
+    for (i = 1; i <= imgElements.length; i++) {
+        c += "<span class='demo' onclick='currentDiv(" + i + ", this)'></span>"
+    }
+ 
+    for (i = 0; i < controlElements.length; i++) {
+        controlElements[i].innerHTML = c
+    }
+
+    showDivs(slideIndex[d], d);
 }
 
-function currentDiv(n) {
-  showDivs(slideIndex = n);
+function getIndexOfSlideshow(e) {
+    if (e == undefined) {
+        return -1;
+    }
+    var i = contentElements.indexOf(e);
+    if (i != -1) {
+        return i;
+    }
+    return getIndexOfSlideshow(e.parentNode);
 }
 
-function showDivs(n) {
+function plusDivs(n, e) {
+  d = getIndexOfSlideshow(e);
+  showDivs(slideIndex[d] += n, d);
+}
+
+function currentDiv(n, e) {
+  d = getIndexOfSlideshow(e);
+  showDivs(slideIndex[d] = n, d);
+}
+
+function showDivs(n,d) {
   var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length}
+  var x = document.getElementsByClassName("slideshow")[d].getElementsByTagName("img");
+  var dots = document.getElementsByClassName("slideshow")[d].getElementsByClassName("demo");
+  if (n > x.length) {slideIndex[d] = 1}    
+  if (n < 1) {slideIndex[d] = x.length}
   for (i = 0; i < x.length; i++) {
      x[i].style.display = "none";  
   }
   for (i = 0; i < dots.length; i++) {
-     dots[i].className = dots[i].className.replace(" w3-white", "");
+     dots[i].className = dots[i].className.replace(" white", "");
   }
-  x[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " w3-white";
+  x[slideIndex[d]-1].style.display = "block";  
+  dots[slideIndex[d]-1].className += " white";
 }
+
 </script>
 {{/contentFor}}
